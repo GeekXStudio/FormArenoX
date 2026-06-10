@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فورمة التسجيل في البطولات - ArenoX العراق</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="/image/ArenoX-logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="img-background">
+        <img src="image/stadium-glow.jpg" alt="ArenoX Stadium">
+    </div>
+    <main class="auth-container">
+        <div class="tournaments-wrapper">
+            <h1 class="auth-title">بطولات <span class="purple-gradient-text">ArenoX</span></h1>
+            <p class="auth-subtitle">اختر حجم البطولة الذي يناسب مهاراتك وانضم للتحدي</p>
+
+            <div class="tournaments-grid">
+                <div class="tournament-card">
+                    <div class="card-img"><img src="image/64.jpg" alt="بطولة 64 لاعب"></div>
+                    <h3>بطولة التحدي (64 لاعب)</h3>
+                    <p>ساحة تنافسية واسعة، فرصة ممتازة للمنافسة والصعود في لوحة التصنيف.</p>
+                    <div class="card-footer">
+                        <span class="prize-tag"><i class="fas fa-users"></i> 64 لاعب</span>
+                        <a href="#requestForm" onclick="selectTournament('بطولة التحدي (64 لاعب)')"
+                            class="btn-submit-auth">تسجيل مجاني</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div id="counterDisplay" style="
+    text-align: center; 
+    color: #ffffff; 
+    font-weight: 600; 
+    margin: 20px auto; 
+    padding: 15px;
+    background: rgba(188, 0, 255, 0.1); 
+    border: 1px solid #bc00ff;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(188, 0, 255, 0.3);
+    font-family: 'Segoe UI', sans-serif;
+    letter-spacing: 1px;
+    backdrop-filter: blur(5px);
+    width: fit-content;
+    min-width: 250px;">
+
+        <span style="color: #bc00ff; font-size: 1.1rem; text-shadow: 0 0 8px #bc00ff;">●</span>
+        جاري تحميل عدد المقاعد...
+    </div>
+    <form class="request-form" id="requestForm">
+        <label>
+            <h2>الاسم الكامل</h2>
+            <input type="text" id="fullName" placeholder="أدخل اسمك الثلاثي" required />
+        </label>
+        <label>
+            <h2>اسم المستخدم</h2>
+            <input type="text" id="userName" placeholder="اسم المستخدم (على المنصة)" required />
+        </label>
+        <label>
+            <h2>المنصة</h2>
+            <select id="platform" required>
+                <option value="">اختر المنصة</option>
+                <option value="فيسبوك">فيسبوك</option>
+                <option value="إنستغرام">إنستغرام</option>
+                <option value="تيليجرام">تيليجرام</option>
+                <option value="تيكتوك">تيكتوك</option>
+            </select>
+        </label>
+        <label>
+            <h2>نوع البطولة</h2>
+            <select id="tournamentType" required>
+                <option value="">اختر البطولة</option>
+                <option value="بطولة التحدي (64 لاعب)">بطولة التحدي (64 لاعب)</option>
+            </select>
+        </label>
+        <label>
+            <h2 style="color: #ff4d4d; font-weight: bold;">⚠️ اسم المستخدم في (تليجرام) - إجباري</h2>
+            <p style="font-size: 0.85rem; color: #ccc; margin-bottom: 5px;">
+                يرجى كتابة اسم المستخدم الخاص بك في تليجرام، أي اسم من منصة أخرى أو معرف غير صحيح <b>سيتم إهمال طلبك
+                    فوراً</b>.
+            </p>
+            <input type="text" id="telegramUserName" placeholder="مثال: @username" required />
+        </label>
+        <button type="submit" class="btn primary" id="submitBtn">إرسال الطلب</button>
+    </form>
+
+    <div id="formResult"></div>
+
+    <footer>
+        <div class="footer-socials">
+            <h4>تابع مجتمعنا</h4>
+            <p>انضم إلينا لتبقى على اطلاع بأحدث مواعيد البث والبطولات القادمة:</p>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/share/1CnYJyZErw/" class="social-btn facebook" title="facebook"><i
+                        class="fab fa-facebook"></i></a>
+                <a href="https://www.tiktok.com/@arenox7?_r=1&_t=ZS-96fI8gDjNlk" class="social-btn tiktok"
+                    title="TikTok"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.instagram.com/are.nox?igsh=MWQ0ZmI4eWE5c2p0dA==" class="social-btn instagram"
+                    title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://t.me/arenox7" class="social-btn telegram" title="Telegram"><i
+                        class="fab fa-telegram"></i></a>
+                <a href="https://www.youtube.com/@Aren.0X" class="social-btn youtube" title="YouTube"><i
+                        class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

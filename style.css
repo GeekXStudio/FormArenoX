@@ -1,0 +1,464 @@
+/* --- تنسيق خلفية الصفحة --- */
+.img-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.img-background img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: brightness(0.4);
+}
+
+/* --- 1. الألوان الثابتة لهوية ArenoX --- */
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap");
+
+:root {
+  --bg-dark: #06020b;
+  --card-bg: #110c1f;
+  --neon-purple: #7000ff;
+  --accent-glow: #bc00ff;
+  --text-main: #ffffff;
+  --text-muted: #8b8798;
+  --border-color: rgba(112, 0, 255, 0.25);
+}
+
+.purple-gradient-text {
+  background: linear-gradient(45deg, #ff00ea, #7000ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Cairo", sans-serif;
+}
+
+body {
+  background:
+    linear-gradient(rgba(6, 2, 11, 0.4), rgba(6, 2, 11, 0.6)),
+    url("stadium-glow.jpg") no-repeat center center/cover;
+  background-attachment: fixed;
+  color: var(--text-main);
+  direction: rtl;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* --- 2. الهيدر --- */
+header {
+  background: linear-gradient(to bottom, #06020b, #110c1f);
+  border-bottom: 1px solid var(--border-color);
+  padding: 10px 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 90px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header-left,
+.header-icons-group {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.header-icon-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.2rem;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.header-icon-btn:hover {
+  color: #fff;
+  background: rgba(112, 0, 255, 0.15);
+  text-shadow: 0 0 10px var(--accent-glow);
+}
+
+/* البحث والقائمة المنسدلة */
+.search-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  z-index: 10;
+}
+.search-input-box {
+  width: 0;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.search-input-box.active {
+  width: 200px;
+  margin-left: 10px;
+}
+.search-input-box input {
+  width: 100%;
+  padding: 8px 15px;
+  background-color: #110c1f;
+  border: 1px solid var(--neon-purple);
+  border-radius: 20px;
+  color: #fff;
+  outline: none;
+}
+
+.lang-dropdown {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  width: 130px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 1100;
+}
+.lang-dropdown.show {
+  opacity: 1;
+  visibility: visible;
+}
+.lang-item {
+  display: block;
+  padding: 10px 15px;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.85rem;
+}
+
+/* --- 3. قسم البطولات --- */
+.tournaments-wrapper {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+.tournaments-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.tournament-card {
+  background: #110c1f;
+  border: 1px solid rgba(112, 0, 255, 0.4);
+  border-radius: 20px;
+  padding: 20px;
+  transition: all 0.4s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.tournament-card:hover {
+  border-color: #00f2fe;
+  box-shadow: 0 0 20px rgba(0, 242, 254, 0.2);
+}
+
+/* --- تعديل طريقة عرض الصور لضمان التجاوب --- */
+.card-img {
+  width: 100%;
+  height: 200px;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  background: #0d0918;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative; /* لضمان ثبات الإطار */
+}
+
+.card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* تجعل الصورة تغطي المساحة كاملة باحترافية */
+  object-position: center; /* توسيط الصورة دائماً */
+  transition: transform 0.5s ease; /* إضافة تأثير حركة بسيط عند التحميل */
+}
+
+/* إضافة تأثير بسيط عند مرور الماوس على الصورة */
+.tournament-card:hover .card-img img {
+  transform: scale(1.05);
+}
+.card-footer {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 15px;
+}
+.btn-submit-auth {
+  padding: 10px 20px;
+  background: linear-gradient(135deg, #7000ff, #00f2fe);
+  border-radius: 8px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+/* --- 4. الفوتر (مختصر) --- */
+.arenox-footer {
+  background: linear-gradient(to top, #030106, #0e0a1a);
+  padding: 60px 6% 20px;
+  border-top: 1px solid var(--border-color);
+}
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+  }
+  .quick-cards-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --- تنسيق النموذج (Form) --- */
+.request-form {
+  background: #110c1f;
+  padding: 30px;
+  border-radius: 16px;
+  border: 1px solid rgba(112, 0, 255, 0.3);
+  max-width: 500px;
+  margin: 40px auto;
+  color: #fff;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.request-form label {
+  display: block;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+.request-form h2 {
+  font-size: 1rem;
+  margin-bottom: 8px;
+  color: #ccc;
+}
+.request-form input,
+.request-form select,
+.request-form textarea {
+  width: 100%;
+  padding: 12px;
+  background: #06020b;
+  border: 1px solid #332d4a;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 1rem;
+  transition: 0.3s;
+}
+
+.request-form input:focus,
+.request-form textarea:focus {
+  border-color: #7000ff;
+  outline: none;
+  box-shadow: 0 0 8px rgba(112, 0, 255, 0.3);
+}
+
+/* --- تنسيق الزر --- */
+.btn.primary {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, #7000ff, #bc00ff);
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.btn.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(112, 0, 255, 0.4);
+}
+
+#formResult {
+  font-size: 1rem;
+  padding: 10px;
+  border-radius: 8px;
+}
+/* تنسيق قسم التواصل الاجتماعي */
+.footer-socials {
+  text-align: center;
+  margin-top: 40px;
+  padding: 20px;
+  color: #fff;
+}
+
+.footer-socials h4 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #a855f7; /* لون التدرج الأرجواني الخاص بك */
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 15px; /* المسافة بين الأيقونات */
+  margin-top: 15px;
+}
+
+.social-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  background-color: #1f1f2e; /* خلفية داكنة للأيقونة */
+  color: white;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  border: 1px solid #333;
+}
+
+/* تأثير التفاعل عند مرور الماوس */
+.social-btn:hover {
+  background-color: #a855f7;
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(168, 85, 247, 0.4);
+}
+
+/* تنسيق خاص لكل أيقونة حسب لونها الرسمي (اختياري) */
+.social-btn.discord:hover {
+  background-color: #5865f2;
+}
+.social-btn.tiktok:hover {
+  background-color: #000000;
+}
+.social-btn.instagram:hover {
+  background-color: #e1306c;
+}
+.social-btn.telegram:hover {
+  background-color: #0088cc;
+}
+.social-btn.youtube:hover {
+  background-color: #ff0000;
+}
+/* تنسيق رسالة التنبيه المنبثقة */
+#formResult {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: linear-gradient(135deg, #a855f7, #6366f1);
+  color: white;
+  padding: 15px 25px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  z-index: 9999;
+  display: none; /* مخفية افتراضياً */
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1rem;
+  font-weight: bold;
+  animation: slideIn 0.5s ease-out;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* حركة ظهور الرسالة */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* تنسيق أيقونة الصح داخل الرسالة */
+#formResult i {
+  margin-left: 10px;
+  font-size: 1.2rem;
+}
+/* --- إضافات التجاوب (Responsive Queries) --- */
+
+/* 1. للموبايل والأجهزة الصغيرة (شاشات أقل من 768px) */
+@media (max-width: 768px) {
+  .tournaments-grid {
+    grid-template-columns: 1fr; /* جعل البطاقات تظهر واحدة تحت الأخرى */
+    gap: 20px;
+    padding: 10px;
+  }
+
+  .request-form {
+    width: 95%; /* جعل الفورمة تأخذ معظم عرض الشاشة */
+    padding: 20px;
+    margin: 20px auto;
+  }
+
+  .footer-socials h4 {
+    font-size: 1.2rem;
+  }
+
+  .social-icons {
+    gap: 10px;
+  }
+
+  .social-btn {
+    width: 45px;
+    height: 45px;
+    font-size: 1.2rem;
+  }
+
+  /* رسالة النجاح في الموبايل تكون في الأعلى ومركزة */
+  #formResult {
+    width: 90%;
+    right: 5%;
+    left: 5%;
+    top: 10px;
+    padding: 15px;
+  }
+}
+
+/* 2. للأجهزة اللوحية (التابلت - شاشات بين 769px و 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .tournaments-grid {
+    grid-template-columns: repeat(2, 1fr); /* جعل البطاقات في عمودين */
+  }
+
+  .request-form {
+    max-width: 80%;
+  }
+}
+
+/* 3. لضمان توافق المتصفحات (إضافة خصائص التوافق) */
+* {
+  -webkit-overflow-scrolling: touch; /* لتحسين السحب في أجهزة آيفون */
+}
+
+body {
+  -webkit-text-size-adjust: 100%; /* منع تغير حجم الخط في المتصفحات المختلفة */
+  -ms-text-size-adjust: 100%;
+}
